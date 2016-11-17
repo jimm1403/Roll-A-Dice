@@ -22,9 +22,14 @@ namespace UnitTest
         public void CanCheckWhoTheWinnerIs()
         {
             RollADice newDiceRoll = new RollADice();
+            Player newPlayer = new Player("Lotto");
+            Player newPlayer1 = new Player("Jimmi");
+            PlayerRepository playerRepo = new PlayerRepository();
+            playerRepo.AddPlayerToList(newPlayer);
+            playerRepo.AddPlayerToList(newPlayer1);
 
-            Assert.AreEqual("Player One Wins!", newDiceRoll.winOrLose(6, 2));
-            Assert.AreEqual("Player Two Wins!", newDiceRoll.winOrLose(3, 5));
+            Assert.AreEqual("Lotto Wins!", newDiceRoll.winOrLose(6, 2));
+            Assert.AreEqual("Jimmi Wins!", newDiceRoll.winOrLose(3, 5));
             Assert.AreEqual("It's A Draw!", newDiceRoll.winOrLose(4, 4));
         }
         [Test]
@@ -34,7 +39,7 @@ namespace UnitTest
 
             Assert.AreEqual("Lotto", newPlayer.UserName);
         }
-       /* [Test]
+        [Test]
         public void PlayersCantHaveTheSameUserName()
         {
             //List<Item> items = new List<Item>() {  };
@@ -45,9 +50,8 @@ namespace UnitTest
             playerRepo.AddPlayerToList(newPlayer1);
             playerRepo.AddPlayerToList(newPlayer2);
 
-            Assert.AreEqual("Name already taken. Try something else.", playerRepo.CompareUserNames("Lotto"));
+            Assert.AreEqual("Name already taken. Click enter and go back to menu and try again.", playerRepo.CompareUserNames("Lotto"));
         }
-        */
         [Test]
         public void CanGetPlayerWins()
         {
